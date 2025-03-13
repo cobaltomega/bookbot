@@ -24,17 +24,40 @@ def letter_count():
             letters[letter] = 1
     return letters
 
-def sort_char_count(char_count):
-    chars_list = []
-    for char, count in char_count.items():
-        chars_list.append({"char": char, "count": count})
-    chars_list.sort(key=sort_on, reverse=True)
-    return chars_list
+def sort_dict(dict):
+    list_order = []
+    for letter, count in dict.items():
+        list_order.append({"letter": letter, "count": count})
+    list_order.sort(key=sort_on, reverse=True)
+    return list_order
+
 
 def sort_on(dict):
 
     return dict["count"]
     
+def print_info():
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+
+    print("----------- Word Count ----------")
+    
+    word_count = get_num_words()
+
+    print(f"Found {word_count} total words")
+
+    print("--------- Character Count -------")
+
+    l_count = letter_count()
+    sorted_chars = sort_dict(l_count)
+
+    for char_dict in sorted_chars:
+        letter = char_dict["letter"]
+        count = char_dict["count"]
+        if letter.isalpha():
+            print(f"{letter}: {count}")
+    
+    print("============= END ===============")
 
 
 
