@@ -1,3 +1,5 @@
+import sys
+
 def get_book_text(file):
 
     with open(file) as f:
@@ -7,13 +9,13 @@ def get_book_text(file):
 
 def get_num_words():
 
-    file_contents = get_book_text("books/frankenstein.txt")
+    file_contents = get_book_text(sys.argv[1])
     words = file_contents.split()
     num_words = len(words)
     return num_words
 
 def letter_count():
-    file_contents = get_book_text("books/frankenstein.txt")
+    file_contents = get_book_text(sys.argv[1])
     letters = {}
     lower_letter = file_contents.lower()
 
@@ -38,7 +40,7 @@ def sort_on(dict):
     
 def print_info():
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at books/{sys.argv[1]}...")
 
     print("----------- Word Count ----------")
     
@@ -58,7 +60,3 @@ def print_info():
             print(f"{letter}: {count}")
     
     print("============= END ===============")
-
-
-
-
